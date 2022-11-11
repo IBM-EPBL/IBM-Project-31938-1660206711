@@ -1,0 +1,20 @@
+ apiVersion: apps/v1
+ kind: Deployment
+ metadata:
+   name: flask-node-deployment
+ spec:
+   replicas: 1
+   selector:
+     matchLabels:
+       app: myjobportal
+   template:
+     metadata:
+       labels:
+         app: myjobportal
+     spec:
+       containers:
+       - name: myjobportal
+         image: us.icr.io/gokulrepo/job-portal-final
+         imagePullPolicy: Always
+         ports:
+         - containerPort: 5000
